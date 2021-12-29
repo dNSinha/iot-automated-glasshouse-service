@@ -1,0 +1,8 @@
+---
+applications:
+  - name: aipp-ocp-node-seed-app
+    command: npm start
+    memory: 256M
+    disk_quote: 512M
+    path: ./
+    buildpack: nodejs_buildpack_current

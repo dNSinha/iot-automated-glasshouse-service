@@ -1,0 +1,25 @@
+# This file is used to  automatically request for review when someone opens a pull request
+
+#Add a list of shortnames starting with an asterisk like this: *@example
+
+#Team Examples:
+
+#Tesla
+
+#Mercury
+
+#Wolverine
+
+#Honey Badgers
+
+# This file is used to  automatically request for review when someone opens a pull request
+
+#  Keycontacts
+# | Role                |Contacts                           |
+# |--------             |---------------------------------- |
+# | Product Owner       | example                           |
+# | Business Analyst    |                                   |
+# | Scrum Master        |                                   |
+# | Architects          |                                   |
+# | Development team    |                                   |
+# | QA Team             |                                   |

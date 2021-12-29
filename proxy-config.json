@@ -1,0 +1,12 @@
+{
+  "token": {
+    "issuer": "LOCAL_ISSUER",
+    "audience": "LOCAL_AUDIENCE",
+    "subject": "LOCAL_USER",
+    "groups": ["SEED_APP_USER"]
+  },
+  "proxyServer": {
+    "port": "5050"
+  },
+  "targetUrl": "http://localhost:3000"
+}

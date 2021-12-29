@@ -1,0 +1,42 @@
+{
+  "include": [
+    "src/**/*",
+    "test/**/*",
+    "bin/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "lib": [
+      "es6"
+    ],
+    "allowJs": true,
+    "outDir": "build",
+    //"rootDir": "src",
+    "baseUrl": "",
+    "paths": {
+      "src/*": [
+        "src/*"
+      ],
+      "test/*": [
+        "test/*"
+      ],
+      "bin/*": [
+        "bin/*"
+      ]
+    },
+    "strict": true,
+    "noImplicitAny": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "typeRoots": [
+      "src/typings",
+      "node_modules/@types"
+    ]
+  }
+}
