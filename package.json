@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Node.js with TypeScript Application for automated glasshouse",
   "scripts": {
-    "build": "tsc && npm run copy:manifests && npm run copy:pkgjson && npm run copy:dockerfiles",
-    "debug": "node -r ts-node/register --inspect ./bin/server.ts",
+    "build": "tsc && npm run copy:manifests && npm run copy:pkgjson",
+    "debug": "node -r ts-node/register --inspect ./bin/server.ts",    
     "precommit": "eslint",
     "start": "node ./build/bin/server.js",
     "start:dev": "run-p start:dev:*",
@@ -14,8 +14,7 @@
     "test:unit": "cross-env jest",
     "test:unit:watch": "cross-env jest --watch",
     "test:unit:coverage": "cross-env jest --coverage",
-    "copy:manifests": "copyfiles ./manifest.* ./build",
-    "copy:dockerfiles": "copyfiles ./Dockerfile.* ./build",
+    "copy:manifests": "copyfiles ./manifest.* ./build",    
     "copy:pkgjson": "copyfiles ./package*.json ./build"
   },
   "repository": {
