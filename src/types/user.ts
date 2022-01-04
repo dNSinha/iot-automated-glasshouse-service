@@ -6,3 +6,7 @@ export interface User {
   userGroups: Array<string>;
   userRoles: Array<string>;
 }
+
+export interface dboType {
+  collection: any;
+}

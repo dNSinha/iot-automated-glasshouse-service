@@ -5,7 +5,7 @@ import { applicationConstants } from '../../components/applicationConstants';
 const validate = require('uuid-validate');
 
 export const validateHeader = (req: any, res: Response, next: NextFunction) => {
-  const correlationId: string = req.get(applicationConstants.TrvCorrelationId);
+  const correlationId: string = req.get(applicationConstants.CorrelationId);
   if (correlationId && validate(correlationId)) {
     req.locals = Object.assign({}, { tracking: res.locals.tracking });
     next();

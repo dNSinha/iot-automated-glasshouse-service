@@ -1,8 +1,9 @@
 'use strict';
 
 const applicationConstants = {
-  TrvCorrelationId: 'Trv-Correlation-Id',
-  TrvSessionId: 'Trv-Session-Id',
+  CorrelationId: 'Correlation-Id',
+  database: 'glasshousedb',
+  collection: 'glasshouse',
   pingSuccess: 'pong'
 };
 

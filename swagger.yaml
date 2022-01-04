@@ -1,14 +1,14 @@
 openapi: 3.0.0
 info:
-  title: AIPP OCP Seed App
-  description: REST API used as an example.
+  title: Automated Glasshouse
+  description: REST API for automated glasshouse.
   version: 0.1.0
 
 servers:
   - url: http://localhost:3000
     description: LOCALHOST
-  - url: https://dev-sampleURL.apps.awsnp1.ocpnp.travp.net #aPut your OCP here
-    description: DEV
+  - url: https://automated-glasshouse-service.herokuapp.com
+    description: PROD
 
 consumes:
   - application/json
@@ -19,6 +19,22 @@ paths:
   /api/ping:
     get:
       summary: Used to test application availability
+      description:
+      parameters:
+        - $ref: '#/components/parameters/CorrelationParam'
+      responses:
+        '200':    # status code
+          description: Application is up and running
+          content:
+            application/json:
+              schema:
+                type: string
+        '404':
+          description: Api not responding
+
+  /api/sensor/device1:
+    get:
+      summary: Used to get sensor data from MongoDB
       description:
       parameters:
         - $ref: '#/components/parameters/CorrelationParam'
@@ -69,7 +85,7 @@ components: # used to put uuid into header
   parameters:
     CorrelationParam:
       in: header
-      name: Trv-Correlation-Id
+      name: Correlation-Id
       schema:
         type: string
         format: uuid

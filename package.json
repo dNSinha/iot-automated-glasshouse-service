@@ -1,5 +1,5 @@
 {
-  "name": "@trv/node-typescript-seed",
+  "name": "iot-automated-glasshouse-service",
   "version": "1.0.0",
   "description": "Node.js with TypeScript Application for automated glasshouse",
   "scripts": {
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.prodlb.travp.net/ebusiness/aipp-ocp-node-seed.git"
+    "url": "https://github.com/dNSinha/iot-automated-glasshouse-service"
   },
   "author": "Durgesh Nandan Sinha",
   "license": "ISC",

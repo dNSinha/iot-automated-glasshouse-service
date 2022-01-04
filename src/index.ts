@@ -4,14 +4,14 @@ import { routes } from './api';
 import swaggerUi from 'swagger-ui-express';
 const yaml = require('yamljs');
 const swaggerDocument = yaml.load('./swagger.yaml');
-// import { connectDB } from './db';
+import { db } from './db';
 
 
 const app = () => {
   const app = express();  
   app.use(bodyParser.json());
   
-  // connectDB();
+  db.init();
   
   app.use('/api', routes);
   if (process.env.ENABLE_SWAGGER === 'true')
