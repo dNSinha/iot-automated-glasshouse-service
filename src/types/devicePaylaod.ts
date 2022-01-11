@@ -3,5 +3,6 @@ export interface DevicePaylaod {
     soil_moisture: number;
     temperature: number;
     water_tank: number;
-    received_at: string;
+    date: string;
+    time: string;
   }

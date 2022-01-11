@@ -32,12 +32,36 @@ paths:
         '404':
           description: Api not responding
 
-  /api/sensor/device1:
+  /api/sensor/complete:
     get:
       summary: Used to get sensor data from MongoDB
       description:
       parameters:
         - $ref: '#/components/parameters/CorrelationParam'
+      responses:
+        '200':    # status code
+          description: Application is up and running
+          content:
+            application/json:
+              schema:
+                type: string
+        '404':
+          description: Api not responding
+
+  /api/sensor/current:
+    post:
+      summary: Used to get sensor data of cuttent date & time from MongoDB
+      description:
+      parameters:
+        - $ref: '#/components/parameters/CorrelationParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/definitions/current'
+
       responses:
         '200':    # status code
           description: Application is up and running
@@ -93,6 +117,14 @@ components: # used to put uuid into header
       required: true
 
 definitions: # example definitions for sample
+    current:
+      type: object
+      properties:
+        date:
+          type: string
+        time:
+          type: string
+      
     sample:
       type: object
       properties:

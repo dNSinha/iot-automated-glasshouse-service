@@ -7,6 +7,23 @@ const helpers = {
     return value === undefined || value === null || Object.keys(value).length === 0;
   },
 
+  getDate: (data: any) => {
+    return data && data.split("T") && data.split("T")[0];
+  },
+
+  getTime: (data: any) => {
+    const time = data && data.split("T") && data.split("T")[1];
+    return time && time.slice(0, -11);
+  },
+
+  generateDateTimeQuery: (data) => {
+    const query: any = {
+      date: data.date,
+      time: data.time
+    }
+    return query;
+  },
+
   arrayContainsArray: (superset: any, subset: any) => {
     try {
       if (subset.length < 1) {

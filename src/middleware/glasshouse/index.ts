@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { db } from '../../db';
 import { DevicePaylaod } from '../../types/devicePaylaod';
+import { helpers } from '../../utilities/helpers';
 
 const getDevicePayload = (data): any => {
     const payload: DevicePaylaod = {
@@ -8,7 +9,8 @@ const getDevicePayload = (data): any => {
         soil_moisture: data?.uplink_message?.decoded_payload?.soil_moisture,
         temperature: data?.uplink_message?.decoded_payload?.temperature,
         water_tank: data?.uplink_message?.decoded_payload?.water_tank,
-        received_at: data?.received_at
+        date: helpers.getDate(data?.received_at),
+        time: helpers.getTime(data?.received_at)
     };
     return payload;
 }
@@ -24,9 +26,21 @@ const uploadSensor = async (req: Request, res: Response, next: NextFunction) => 
     }
 }
 
+// {date: "2022-01-03", time: "13:46:25"}
+// const getDateSensor = async (req: Request, res: Response, next: NextFunction) => {
+//     try {
+//         const query = req.requestData.query ? req.requestData.query : {};
+//         res.responseData.sensorValues = await db.getSensorValues(query);
+//         return next();
+//     } catch (error) {
+//         return next(error)
+//     }
+// }
+
 const getSensor = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        res.responseData.sensorValues = await db.getSensorValues();
+        const query = req.requestData.query ? req.requestData.query : {};
+        res.responseData.sensorValues = await db.getSensorValues(query);
         return next();
     } catch (error) {
         return next(error)

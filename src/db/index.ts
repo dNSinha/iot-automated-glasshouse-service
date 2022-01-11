@@ -33,9 +33,9 @@ const init = async () => {
     }
 }
 
-const getSensorValues = async () => {
+const getSensorValues = async (query) => {
     try {
-        const result = await dbo.collection(applicationConstants.collection).find({}).toArray()
+        const result = await dbo.collection(applicationConstants.collection).find(query).toArray()
         return result
     } catch (err) {
         throw err

@@ -1,12 +1,20 @@
 import { Request, Response, NextFunction } from 'express';
 import express from 'express';
+import { helpers } from '../../utilities/helpers';
 
 const router = express.Router({ mergeParams: true });
 
 // TODO: Change name of route after device
-router.route('/device1').get((req: Request, res: Response, next: NextFunction) => {
-    req.requestData = req.body;
+router.route('/complete').get((req: Request, res: Response, next: NextFunction) => {
+    req.requestData = Object.assign({}, {});
     res.responseData = Object.assign({}, {});
+    next();
+});
+
+router.route('/current').post((req: Request, res: Response, next: NextFunction) => {
+    req.requestData = Object.assign({}, {query: {}, payload: req.body});
+    res.responseData = Object.assign({}, {});
+    req.requestData.query = helpers.generateDateTimeQuery(req.requestData.payload);
     next();
 });
 
