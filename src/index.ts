@@ -8,11 +8,15 @@ import { db } from './db';
 
 
 const app = () => {
-  const app = express();  
+  const app = express();
   app.use(bodyParser.json());
-  
+
   db.init();
-  
+  app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
   app.use('/api', routes);
   if (process.env.ENABLE_SWAGGER === 'true')
     app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, { explorer: true }));
