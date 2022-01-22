@@ -42,6 +42,15 @@ const getSensorValues = async (query) => {
     }
 }
 
+const getLastSensorValues = async (query) => {
+    try {
+        const result = await dbo.collection(applicationConstants.collection).find(query).sort({_id:-1}).limit(1).toArray()
+        return result
+    } catch (err) {
+        throw err
+    }
+}
+
 const uploadSensorValues = async (data) => {
     try {
         const sensorUpload = await dbo.collection(applicationConstants.collection).insertOne(data)
@@ -51,4 +60,4 @@ const uploadSensorValues = async (data) => {
     }
 }
 
-export const db = { init, getSensorValues, uploadSensorValues };
+export const db = { init, getSensorValues, getLastSensorValues, uploadSensorValues };

@@ -48,6 +48,22 @@ paths:
         '404':
           description: Api not responding
 
+  /api/sensorNow/last:
+    get:
+      summary: Used to get last sensor data from MongoDB
+      description:
+      parameters:
+        - $ref: '#/components/parameters/CorrelationParam'
+      responses:
+        '200':    # status code
+          description: Application is up and running
+          content:
+            application/json:
+              schema:
+                type: string
+        '404':
+          description: Api not responding
+
   /api/sensor/current:
     post:
       summary: Used to get sensor data of cuttent date & time from MongoDB

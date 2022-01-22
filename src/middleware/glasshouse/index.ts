@@ -47,7 +47,18 @@ const getSensor = async (req: Request, res: Response, next: NextFunction) => {
     }
 }
 
+const getLastSensor = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const query = req.requestData.query ? req.requestData.query : {};
+        res.responseData.sensorValues = await db.getLastSensorValues(query);
+        return next();
+    } catch (error) {
+        return next(error)
+    }
+}
+
 export const glasshouse = {
     uploadSensor,
-    getSensor
+    getSensor,
+    getLastSensor
 }
