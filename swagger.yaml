@@ -48,7 +48,7 @@ paths:
         '404':
           description: Api not responding
 
-  /api/sensorNow/last:
+  /api/sensorNow/current:
     get:
       summary: Used to get last sensor data from MongoDB
       description:
@@ -64,7 +64,7 @@ paths:
         '404':
           description: Api not responding
 
-  /api/sensor/current:
+  /api/sensor/timed:
     post:
       summary: Used to get sensor data of cuttent date & time from MongoDB
       description:
@@ -76,7 +76,7 @@ paths:
           application/json:
             schema:
               type: object
-              $ref: '#/definitions/current'
+              $ref: '#/definitions/timed'
 
       responses:
         '200':    # status code
@@ -88,9 +88,9 @@ paths:
         '404':
           description: Api not responding
 
-  /api/samples: # Doesnt actually work, its just an example
+  /api/device/lora: # Doesnt actually work, its just an example
     post:
-      summary: Just a sample route
+      summary: Upload data to MongoDB
       parameters:
         - $ref: '#/components/parameters/CorrelationParam'
       requestBody:
@@ -133,7 +133,7 @@ components: # used to put uuid into header
       required: true
 
 definitions: # example definitions for sample
-    current:
+    timed:
       type: object
       properties:
         date:

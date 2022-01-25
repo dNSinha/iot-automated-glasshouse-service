@@ -5,10 +5,14 @@ import { helpers } from '../../utilities/helpers';
 
 const getDevicePayload = (data): any => {
     const payload: DevicePaylaod = {
+        avg_soil_moisture: data?.uplink_message?.decoded_payload?.avg_soil_moisture,
+        soil_moisture1: data?.uplink_message?.decoded_payload?.soil_moisture1,
+        soil_moisture2: data?.uplink_message?.decoded_payload?.soil_moisture2,
+        soil_moisture3: data?.uplink_message?.decoded_payload?.soil_moisture3,
         humidity: data?.uplink_message?.decoded_payload?.humidity,
-        soil_moisture: data?.uplink_message?.decoded_payload?.soil_moisture,
         temperature: data?.uplink_message?.decoded_payload?.temperature,
         water_tank: data?.uplink_message?.decoded_payload?.water_tank,
+        light: data?.uplink_message?.decoded_payload?.light,
         date: helpers.getDate(data?.received_at),
         time: helpers.getTime(data?.received_at)
     };
@@ -26,18 +30,7 @@ const uploadSensor = async (req: Request, res: Response, next: NextFunction) => 
     }
 }
 
-// {date: "2022-01-03", time: "13:46:25"}
-// const getDateSensor = async (req: Request, res: Response, next: NextFunction) => {
-//     try {
-//         const query = req.requestData.query ? req.requestData.query : {};
-//         res.responseData.sensorValues = await db.getSensorValues(query);
-//         return next();
-//     } catch (error) {
-//         return next(error)
-//     }
-// }
-
-const getSensor = async (req: Request, res: Response, next: NextFunction) => {
+const getTimedSensor = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const query = req.requestData.query ? req.requestData.query : {};
         res.responseData.sensorValues = await db.getSensorValues(query);
@@ -49,8 +42,7 @@ const getSensor = async (req: Request, res: Response, next: NextFunction) => {
 
 const getLastSensor = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const query = req.requestData.query ? req.requestData.query : {};
-        res.responseData.sensorValues = await db.getLastSensorValues(query);
+        res.responseData.sensorValues = await db.getLastSensorValues();
         return next();
     } catch (error) {
         return next(error)
@@ -59,6 +51,6 @@ const getLastSensor = async (req: Request, res: Response, next: NextFunction) =>
 
 export const glasshouse = {
     uploadSensor,
-    getSensor,
+    getTimedSensor,
     getLastSensor
 }

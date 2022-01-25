@@ -11,7 +11,7 @@ router.route('/complete').get((req: Request, res: Response, next: NextFunction) 
     next();
 });
 
-router.route('/current').post((req: Request, res: Response, next: NextFunction) => {
+router.route('/timed').post((req: Request, res: Response, next: NextFunction) => {
     req.requestData = Object.assign({}, {query: {}, payload: req.body});
     res.responseData = Object.assign({}, {});
     req.requestData.query = helpers.generateDateTimeQuery(req.requestData.payload);

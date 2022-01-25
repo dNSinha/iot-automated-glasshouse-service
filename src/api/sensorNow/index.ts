@@ -4,7 +4,7 @@ import { helpers } from '../../utilities/helpers';
 
 const router = express.Router({ mergeParams: true });
 
-router.route('/last').get((req: Request, res: Response, next: NextFunction) => {
+router.route('/current').get((req: Request, res: Response, next: NextFunction) => {
     req.requestData = Object.assign({}, {});
     res.responseData = Object.assign({}, {});
     next();

@@ -42,9 +42,9 @@ const getSensorValues = async (query) => {
     }
 }
 
-const getLastSensorValues = async (query) => {
+const getLastSensorValues = async () => {
     try {
-        const result = await dbo.collection(applicationConstants.collection).find(query).sort({_id:-1}).limit(1).toArray()
+        const result = await dbo.collection(applicationConstants.collection).find().sort({_id:-1}).limit(1).toArray()
         return result
     } catch (err) {
         throw err
