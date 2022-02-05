@@ -35,7 +35,7 @@ const init = async () => {
 
 const getSensorValues = async (query) => {
     try {
-        const result = await dbo.collection(applicationConstants.collection).find(query).toArray()
+        const result = await dbo.collection(applicationConstants.collection).find(query).sort({_id:-1}).limit(500).toArray()
         return result
     } catch (err) {
         throw err
