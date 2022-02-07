@@ -8,7 +8,7 @@ import { applicationConstants } from '../components/applicationConstants';
 //         await client.connect();
 //         const db = client.db("glasshousedb");
 //         const collection = db.collection("glasshouse");
-        
+
 //         res.responseData.dataUpload = await collection.insertOne(req.body);
 //         next();
 //     } catch (error) {
@@ -35,7 +35,16 @@ const init = async () => {
 
 const getSensorValues = async (query) => {
     try {
-        const result = await dbo.collection(applicationConstants.collection).find(query).sort({_id:-1}).limit(500).toArray()
+        const result = await dbo.collection(applicationConstants.collection).find(query).toArray()
+        return result
+    } catch (err) {
+        throw err
+    }
+}
+
+const getDate = async (query) => {
+    try {
+        const result = await dbo.collection(applicationConstants.dateCollection).find(query).toArray()
         return result
     } catch (err) {
         throw err
@@ -44,7 +53,7 @@ const getSensorValues = async (query) => {
 
 const getLastSensorValues = async () => {
     try {
-        const result = await dbo.collection(applicationConstants.collection).find().sort({_id:-1}).limit(1).toArray()
+        const result = await dbo.collection(applicationConstants.collection).find().sort({ _id: -1 }).limit(1).toArray()
         return result
     } catch (err) {
         throw err
@@ -60,4 +69,4 @@ const uploadSensorValues = async (data) => {
     }
 }
 
-export const db = { init, getSensorValues, getLastSensorValues, uploadSensorValues };
+export const db = { init, getSensorValues, getDate, getLastSensorValues, uploadSensorValues };

@@ -24,6 +24,13 @@ const helpers = {
     return query;
   },
 
+  generateDateQuery: (data) => {
+    const query: any = {
+      date: data.date
+    }
+    return query;
+  },
+
   arrayContainsArray: (superset: any, subset: any) => {
     try {
       if (subset.length < 1) {

@@ -18,4 +18,11 @@ router.route('/timed').post((req: Request, res: Response, next: NextFunction) =>
     next();
 });
 
+router.route('/dated').post((req: Request, res: Response, next: NextFunction) => {
+    req.requestData = Object.assign({}, {query: {}, payload: req.body});
+    res.responseData = Object.assign({}, {});
+    req.requestData.query = helpers.generateDateQuery(req.requestData.payload);
+    next();
+});
+
 export const sensorRouter = router;
